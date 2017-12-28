@@ -1,0 +1,124 @@
+<h3>Add Book</h3>
+<form #form="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+
+  <div fxLayout="column" fxLayoutGap="8px">
+
+    <div fxLayout="row" fxLayoutGap="16px">
+      <md-input-container>
+        <input mdInput id="title" type="text" required [(ngModel)]="newBook.title" name="title" 
+        placeholder="Title">
+      </md-input-container>
+
+
+
+      <md-input-container>
+        <input mdInput id="author" type="text" required [(ngModel)]="newBook.author" name="author" placeholder="Author">
+      </md-input-container>
+
+
+      <md-input-container>
+        <input mdInput id="publisher" type="text" required [(ngModel)]="newBook.publisher" name="publisher" placeholder="Publisher">
+      </md-input-container>
+
+
+ </div>
+    <div fxLayout="row" fxLayoutGap="16px">
+
+
+      <md-input-container>
+        <input mdInput [mdDatepicker]="picker"  id="publicationDate"  required [(ngModel)]="newBook.publicationDate" name="publicationDate" placeholder="PublicationDate">
+          <button mdSuffix [mdDatepickerToggle]="picker"></button>
+      </md-input-container><md-datepicker #picker></md-datepicker>
+
+
+
+
+
+   <md-input-container>
+        <input mdInput id="ourPrice" type="number" [(ngModel)]="newBook.ourPrice" name="ourPrice" step="0.01" placeholder="Our Price">
+      </md-input-container>
+
+
+
+      <md-input-container>
+        <input mdInput id="shippingWeight" type="number" [(ngModel)]="newBook.shippingWeight" name="shippingWeight" step="0.01" placeholder="Shipping Weight">
+      </md-input-container>
+   
+      
+
+</div>
+    <div fxLayout="row" fxLayoutGap="16px">
+
+      <md-input-container>
+        <input mdInput id="pageNumber" type="number" [(ngModel)]="newBook.numberOfPages" name="numberOfPages" step="1" placeholder="Number of Pages">
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput id="isbn" type="text" required [(ngModel)]="newBook.isbn" name="isbn" placeholder="ISBN">
+      </md-input-container>
+
+
+
+      <md-input-container>
+        <input mdInput id="listPrice" type="number" [(ngModel)]="newBook.listPrice" name="listPrice" step="0.01" placeholder="List Price">
+      </md-input-container>
+
+    </div>
+<br>
+
+        <div fxLayout="row" fxLayoutGap="16px">
+
+   
+
+   <md-select placeholder="Category" id="category" name="category" [(ngModel)]="newBook.category">
+        <md-option value="Management">Management</md-option>
+        <md-option value="Fiction">Fiction</md-option>
+        <md-option value="Engineering">Engineering</md-option>
+        <md-option value="Programming">Programming</md-option>
+        <md-option value="Arts &amp; Literature">Arts &amp; Literature</md-option>
+      </md-select>
+
+      <md-select placeholder="Format" id="format" name="format" [(ngModel)]="newBook.format">
+        <md-option value="paperback">Paperback</md-option>
+        <md-option value="hardcover">Hardcover</md-option>
+      </md-select>
+
+
+      <md-select placeholder="Language" id="language" name="language" [(ngModel)]="newBook.language">
+        <md-option value="english">English</md-option>
+        <md-option value="spanish">Spanish</md-option>
+      </md-select>
+</div>
+<br>
+
+    <div fxLayout="row" fxLayoutGap="16px">
+
+      <md-input-container>
+        <input mdInput id="inStockNumber" type="number" [(ngModel)]="newBook.inStockNumber" name="inStockNumber" step="0.01" placeholder="Numbers In Stock">
+      </md-input-container>
+
+
+
+
+
+      <md-slide-toggle [color]="color" [checked]="checked" [disabled]="disabled" [(ngModel)]="newBook.active" name="active">Active</md-slide-toggle>
+
+</div>
+<div fxLayout="row" fxLayoutGap="33px">
+
+  <md-input-container>
+    <textarea mdInput id="description" [(ngModel)]="newBook.description" name="description" placeholder="Description" required></textarea>
+  </md-input-container>
+</div>
+
+<div fxLayout="row" fxLayoutGap="16px">
+  <input  id="tile" type="file" id="bookImage" name="bookImage" (change)="uploadImageService.fileChangeEvent($event)">
+  <br><br>
+</div>
+</div>
+
+<md-dialog-actions align="end">
+  <button md-button type="button" (click)="dialogRef.close()">Cancel</button>
+  <button md-button color="accent"  md-raised-button type="submit">Save Book</button>
+</md-dialog-actions>
+</form>
